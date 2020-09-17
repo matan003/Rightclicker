@@ -3,8 +3,12 @@ package haven.plugins;
 import haven.*;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 public class MarioPlugin extends Plugin{
+    
+    public static boolean hasClickedAll = false;
+    
     public void load(UI ui)
     {
         Glob glob = ui.sess.glob;
@@ -31,6 +35,21 @@ public class MarioPlugin extends Plugin{
         }
         
         Iterator<GItem> handContent = ui.gui.hand.iterator();
+        
+        List<WItem> items = ui.gui.maininv.getSameName("", true);
+        
+        for(int i = items.size() - 1; i < items.size() && i >= 0; i--){
+            WItem subject = items.get(i);
+            if(subject.item.resname().contains("") && !hasClickedAll){
+                subject.mousedown(Coord.z, 2);
+            }
+            
+            try{
+                Thread.sleep(100);
+            }catch(InterruptedException ex){
+                ui.message("Thread could not sleep!", GameUI.MsgType.BAD);
+            }
+        }
         
     }
 }

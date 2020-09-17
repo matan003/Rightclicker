@@ -4,11 +4,11 @@ paginae/act/add
 #uint16 pver
 2
 #String name
-My first plugin
+Mario
 #String preq
 
 #uint16 hk
-119
+077
 #uint16 ad length
 2
 #String ad[0]
